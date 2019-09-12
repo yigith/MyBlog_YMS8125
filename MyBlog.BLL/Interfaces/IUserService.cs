@@ -9,6 +9,7 @@ namespace MyBlog.BLL.Interfaces
     {
         User GetUserById(int id);
         User GetUserByUsername(string username);
+        List<User> GetAllUsers();
         void AddUser(User user, string password);
         void UpdateUser(User user);
         void UpdatePassword(int userId, string password);

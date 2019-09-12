@@ -7,6 +7,7 @@ using MyBlog.Domain.Entities;
 using MyBlog.Domain.Enums;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MyBlog.BLL.Services
@@ -33,6 +34,11 @@ namespace MyBlog.BLL.Services
             var user = _userRepository.GetById(id);
             _userRepository.Delete(user);
             _unitOfWork.SaveChanges();
+        }
+
+        public List<User> GetAllUsers()
+        {
+            return _userRepository.GetAll().OrderBy(x => x.Id).ToList();
         }
 
         public User GetUserById(int id)
