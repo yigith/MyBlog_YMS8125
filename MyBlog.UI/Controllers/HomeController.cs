@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using MyBlog.BLL.Interfaces;
 using MyBlog.BLL.Services;
 using MyBlog.DAL.Contexts;
 using MyBlog.DAL.UnitOfWork;
@@ -16,10 +17,10 @@ namespace MyBlog.UI.Controllers
 {
     public class HomeController : Controller
     {
-        IConfiguration _configuration;
-        public HomeController(IConfiguration configuration)
+        IUserService _userService;
+        public HomeController(IUserService userService)
         {
-            _configuration = configuration;
+            _userService = userService;
         }
 
         public IActionResult Index()
@@ -30,16 +31,16 @@ namespace MyBlog.UI.Controllers
         public IActionResult Deneme()
         {
             // test amaçlı yapıldı silinecek
-            var connectionString = _configuration.GetConnectionString("MyBlogContext");
-            ViewBag.str = connectionString;
-            var options = new DbContextOptionsBuilder<MyBlogContext>()
-                .UseSqlServer(connectionString).Options;
+            //var connectionString = _configuration.GetConnectionString("MyBlogContext");
+            //ViewBag.str = connectionString;
+            //var options = new DbContextOptionsBuilder<MyBlogContext>()
+            //    .UseSqlServer(connectionString).Options;
 
-            MyBlogContext db = new MyBlogContext(options);
-            UnitOfWork<MyBlogContext> uow = new UnitOfWork<MyBlogContext>(db);
-            UserService userService = new UserService(uow);
+            //MyBlogContext db = new MyBlogContext(options);
+            //UnitOfWork<MyBlogContext> uow = new UnitOfWork<MyBlogContext>(db);
+            //UserService userService = new UserService(uow);
 
-            return View(userService.GetAllUsers());
+            return View(_userService.GetAllUsers());
         }
 
         public IActionResult About()
