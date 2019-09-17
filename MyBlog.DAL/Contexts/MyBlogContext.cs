@@ -13,8 +13,7 @@ namespace MyBlog.DAL.Contexts
     {
         public MyBlogContext(DbContextOptions<MyBlogContext> options) : base(options)
         {
-            // Veritabanının oluşturulduğundan ve güncel olduğundan emin ol
-            Database.EnsureCreated();
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

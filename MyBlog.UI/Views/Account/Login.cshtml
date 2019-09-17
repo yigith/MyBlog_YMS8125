@@ -1,9 +1,37 @@
-﻿
+﻿@model LoginViewModel
 @{
     ViewData["Title"] = "Login";
 }
 
-<h2>Kayıt Ol</h2>
+<h2>Giriş Yap</h2>
 
+<form asp-controller="Account" asp-action="Login" asp-route-ReturnUrl="@ViewBag.returnUrl" method="post">
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" type="text" class="form-control" placeholder="E-mail">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" class="form-control" placeholder="Parola">
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group form-check">
+        <input asp-for="RememberMe" type="checkbox" class="form-check-input">
+        <label asp-for="RememberMe" class="form-check-label"></label>
+    </div>
+    <button type="submit" class="btn btn-primary">Giriş Yap</button>
+</form>
+
+@section scripts {
+    <script>
+    toastr.options.positionClass = "toast-bottom-right";
+
+    @if (Context.Request.Query["register"] == "success")
+    {
+        <text>toastr.success("Şimdi giriş yapabilirsiniz.", "Kayıt Başarılı");</text>
+    }
+    </script>
+}
 
 

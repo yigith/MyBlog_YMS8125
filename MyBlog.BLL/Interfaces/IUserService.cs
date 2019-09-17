@@ -15,5 +15,6 @@ namespace MyBlog.BLL.Interfaces
         void UpdatePassword(int userId, string password);
         void DeleteUser(int id);
         bool VerifyPassword(User user, string password);
+        bool UserExists(string username);
     }
 }

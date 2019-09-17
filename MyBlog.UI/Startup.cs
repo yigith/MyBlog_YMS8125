@@ -70,6 +70,7 @@ namespace MyBlog.UI
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

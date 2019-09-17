@@ -109,3 +109,18 @@
     </aside><!-- /.blog-sidebar -->
 
 </div><!-- /.row -->
+
+@section scripts {
+<script>
+    toastr.options.positionClass = "toast-bottom-right";
+
+    @if (Context.Request.Query["login"] == "success")
+    {
+        <text>toastr.success("Hoşgeldin @User.Identity.Name :)", "Giriş Başarılı");</text>
+    }
+    else if (Context.Request.Query["logout"] == "success")
+    {
+        <text>toastr.success("Başarıyla çıkış yapıldı.");</text>
+    }
+</script>
+}
