@@ -41,7 +41,10 @@
                         <a class="btn btn-sm btn-outline-secondary" asp-controller="Account" asp-action="Login">Giriş Yap</a>
                     }
 
-
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-sm btn-outline-secondary ml-1" asp-area="Admin" asp-controller="Home" asp-action="Index">Yönet</a>
+                    }
                 </div>
             </div>
         </header>
