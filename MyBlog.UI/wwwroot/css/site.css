@@ -1,2 +1,6 @@
 ﻿body {
 }
+
+main.container {
+    min-height: 520px;
+}
