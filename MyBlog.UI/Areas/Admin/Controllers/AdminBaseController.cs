@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MyBlog.UI.Areas.Admin.Controllers
 {
+    // https://docs.microsoft.com/tr-tr/aspnet/core/mvc/controllers/areas?view=aspnetcore-2.2
     [Authorize]
+    [Area("Admin")]
     public abstract class AdminBaseController : Controller
     {
 
