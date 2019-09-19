@@ -21,6 +21,12 @@ namespace MyBlog.BLL.Services
             _postRepository = _unitOfWork.GetRepository<Post>();
         }
 
+        public void AddPost(Post post)
+        {
+            _postRepository.Add(post);
+            _unitOfWork.SaveChanges();
+        }
+
         public List<Post> GetPosts()
         {
             return _postRepository

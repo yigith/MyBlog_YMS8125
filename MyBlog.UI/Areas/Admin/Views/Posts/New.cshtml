@@ -5,7 +5,7 @@
 
 <h2>Yeni Yazı</h2>
 
-<form asp-controller="Posts" asp-action="New">
+<form asp-controller="Posts" asp-action="New" method="post">
     <div class="form-group">
         <label asp-for="Title"></label>
         <input asp-for="Title" type="text" class="form-control" placeholder="Başlık">
@@ -13,7 +13,9 @@
     </div>
     <div class="form-group">
         <label asp-for="CategoryId"></label>
-        <select class="form-control" asp-for="CategoryId" asp-items="@ViewBag.CategoryItems"></select>
+        <select class="form-control" asp-for="CategoryId" asp-items="@ViewBag.CategoryItems">
+            <option value="">Seçiniz</option>
+        </select>
         <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -25,12 +27,16 @@
     <button type="submit" class="btn btn-primary">Kaydet</button>
 </form>
 
+
 @section scripts {
     <script>
-    ClassicEditor
-        .create(document.querySelector('#Content'), { language: 'tr' } )
-        .catch( error => {
-            console.error( error );
-        } );
+        ClassicEditor
+            .create(document.querySelector('#Content'),
+            {
+                language: 'tr'
+            })
+            .catch(error => {
+                console.error(error);
+            });
     </script>
 }

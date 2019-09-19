@@ -7,6 +7,7 @@ namespace MyBlog.BLL.Interfaces
 {
     public interface IPostService
     {
+        void AddPost(Post post);
         List<Post> GetPosts();
     }
 }
