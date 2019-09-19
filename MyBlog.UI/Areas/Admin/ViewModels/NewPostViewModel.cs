@@ -14,5 +14,9 @@ namespace MyBlog.UI.Areas.Admin.ViewModels
 
         [Display(Name = "İçerik")]
         public string Content { get; set; }
+
+        [Required(ErrorMessage = "Lütfen bir kategori seçiniz.")]
+        [Display(Name = "Kategori")]
+        public int CategoryId { get; set; }
     }
 }

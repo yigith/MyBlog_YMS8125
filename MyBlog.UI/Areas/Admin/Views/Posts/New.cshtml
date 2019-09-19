@@ -1,28 +1,36 @@
-﻿@model Post
+﻿@model NewPostViewModel
 @{
     ViewData["Title"] = "Yeni Yazı";
 }
 
 <h2>Yeni Yazı</h2>
 
-<form>
+<form asp-controller="Posts" asp-action="New">
     <div class="form-group">
-        <label for="exampleFormControlInput1">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" type="text" class="form-control" placeholder="Başlık">
+        <span asp-validation-for="Title" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label for="exampleFormControlSelect1">Example select</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-        </select>
+        <label asp-for="CategoryId"></label>
+        <select class="form-control" asp-for="CategoryId" asp-items="@ViewBag.CategoryItems"></select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label for="exampleFormControlTextarea1">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <label asp-for="Content"></label>
+        <textarea asp-for="Content" class="form-control" rows="10"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
     </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
 </form>
 
+@section scripts {
+    <script>
+    ClassicEditor
+        .create(document.querySelector('#Content'), { language: 'tr' } )
+        .catch( error => {
+            console.error( error );
+        } );
+    </script>
+}
